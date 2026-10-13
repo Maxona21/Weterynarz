@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Weterynarz.MainPage"
+             BackgroundColor="LightGreen">
+
+
+        <VerticalStackLayout
+            BackgroundColor="#90EE90"
+            Spacing="10"
+            >
+            <Label
+                Text="Wizyta u weterynaza"
+                FontSize="Large"
+                BackgroundColor="#2E8B57"
+                Padding="10"
+                />
+            <Entry
+                x:Name="imieNazwisko"
+                Placeholder="Imie i Nazwisko właściciela"
+                TextColor="Black"
+                PlaceholderColor="DimGray"/>
+            <Label
+                Text="Gatunek"
+                FontSize="18"/>
+            <CollectionView
+                SelectionMode="Single"
+                VerticalOptions="Start"
+                SelectionChanged="onWybrane"
+                x:Name="gatunki"
+                >
+
+                <CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Pies</x:String>
+                        <x:String>Kot</x:String>
+                        <x:String>Chomik</x:String>
+                        <x:String>Świnka Morska</x:String>
+                    </x:Array>
+                </CollectionView.ItemsSource>
+                
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="x:String">
+                    <Label Text="{Binding .}"
+                    FontSize="16"
+                       TextColor="black"
+                       Padding="10,5"
+                       />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        <Grid ColumnDefinitions="auto, auto, *"
+              RowSpacing="10">
+            <Label Text="Ile masz lat "
+                   FontSize="18"
+                   Grid.Column="0"/>
+            <Label
+                   x:Name="wiek"
+                   Text="  0"
+                   FontSize="18"
+                 Grid.Column="1"/>
+            <Slider
+                x:Name="suwak"
+                Minimum="0"
+                Maximum="20"
+                Value="0"
+                Grid.Column="2"
+                ThumbColor="red"
+                MaximumTrackColor="DarkMagenta"
+                MinimumTrackColor="Teal"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center"
+                ValueChanged="onZmianaSuwaka"/>
+            </Grid>
+            
+            <Entry Placeholder="Cel wizyty"
+                   x:Name="celWizyty"
+                   TextColor="Black"
+                   PlaceholderColor="DimGray"
+                   FontSize="18">
+
+            </Entry>
+
+            <TimePicker
+                x:Name="czas"
+                Time="16:00"
+                Format="t"
+                FontSize="18"
+                />
+            <Button
+                x:Name="OKBtn"
+                Text="OK"
+                BackgroundColor="DarkGreen"
+                TextColor="White"
+                Clicked="onClicked"
+                HorizontalOptions="Fill"/>
+
+            <Label
+                x:Name="wynik"
+                TextColor="Black"
+                FontSize="Medium"
+                BackgroundColor="#90EE90"
+                Padding="10"/>
+
+
+        </VerticalStackLayout>
+
+
+</ContentPage>
